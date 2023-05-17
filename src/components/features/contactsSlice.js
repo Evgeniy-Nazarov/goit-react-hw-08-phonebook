@@ -27,15 +27,17 @@ export const contactsSlice = createSlice({
                 };
             },
             deleteContact(state, action) {
-                return state.filter(contact => contact.id !== action.payload);
-            },
-        },
+      const index = state.contacts.findIndex(
+        stat => stat.id === action.payload
+      );
+      state.contacts.splice(index, 1);
     },
-);
+  },
+});
 
 const persistConfig = {
   key: 'root',
-  storage: storage,
+  storage,
   whitelist: ['contacts'],
 };
 

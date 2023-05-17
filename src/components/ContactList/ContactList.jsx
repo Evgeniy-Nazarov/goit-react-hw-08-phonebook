@@ -5,13 +5,13 @@ import { getFilter } from 'components/features/filteredSlice';
 
 const ContactList = () => {
   const contacts = useSelector(getContacts);
-  const filter = useSelector(getFilter);
+  const filterValue = useSelector(getFilter);
   const dispatch = useDispatch();
 
   const onDelete = id => dispatch(deleteContact(id));
 
   const contactsList = contacts.filter(contact =>
-    contact.name.toLowerCase().includes(filter.toLowerCase())
+    contact.name.toLowerCase().includes(filterValue.toLowerCase())
   );
 
   return (
