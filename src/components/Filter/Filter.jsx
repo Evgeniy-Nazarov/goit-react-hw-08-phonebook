@@ -1,6 +1,7 @@
+import PropTypes from 'prop-types';
+import { changeFilter } from 'components/features/filteredSlice';
 import { FilterContainer } from './Filter.styled';
 import { useDispatch } from 'react-redux';
-import { changeFilter } from 'components/features/filteredSlice';
 
 const Filter = () => {
   const dispatch = useDispatch();
@@ -21,3 +22,8 @@ const Filter = () => {
 };
 
 export default Filter;
+
+Filter.propTypes = {
+  filter: PropTypes.string,
+  handleInput: PropTypes.func,
+};

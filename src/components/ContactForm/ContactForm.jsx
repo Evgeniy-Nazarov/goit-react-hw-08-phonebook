@@ -1,4 +1,5 @@
 import { Form, Formik, Field, ErrorMessage } from 'formik';
+import PropTypes from 'prop-types';
 import * as Yup from 'yup';
 import { FormButton, FormLabel, FormSpan } from './ContactForm.styled';
 import { nanoid } from '@reduxjs/toolkit';
@@ -67,3 +68,14 @@ const ContactForm = () => {
 };
 
 export default ContactForm;
+
+ContactForm.propTypes = {
+  onSubmit: PropTypes.func,
+  checkName: PropTypes.func,
+  handleSubmit: PropTypes.func,
+  contacts: PropTypes.array,
+  dispatch: PropTypes.func,
+  name: PropTypes.string,
+  number: PropTypes.string,
+  resetForm: PropTypes.func,
+};
