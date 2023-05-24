@@ -1,45 +1,45 @@
 import { Form, Formik, Field, ErrorMessage } from 'formik';
 import PropTypes from 'prop-types';
-import * as Yup from 'yup';
 import { FormButton, FormLabel, FormSpan } from './ContactForm.styled';
-import { nanoid } from '@reduxjs/toolkit';
 import { useDispatch, useSelector } from 'react-redux';
-import { addContact, getContacts } from 'components/features/contactsSlice';
+import { addContact } from 'components/features/thunk';
+import { Report } from 'notiflix';
+import { selectContacts } from 'components/Selector/Selector';
+import { useEffect } from 'react';
 
 const initialValues = {
   name: '',
   number: '',
 };
 
-const validationSchema = Yup.object({
-  name: Yup.string().required(),
-  number: Yup.number().required(),
-});
-
 const ContactForm = () => {
-  const contacts = useSelector(getContacts);
+  const contacts = useSelector(selectContacts);
   const dispatch = useDispatch();
 
-  const checkName = name => {
-    return contacts.filter(contact => contact.name === name).length > 0;
+  const nameCheck = name => {
+    return contacts.filter(contact => contact.name.includes(name));
   };
 
   const handleSubmit = (values, { resetForm }) => {
-    const { name, number } = values;
-    if (checkName(name)) {
-      alert(`${name} is already in contacts`);
+    resetForm();
+    const check = nameCheck(values.name);
+
+    if (check.length <= 0) {
+      dispatch(addContact(values));
       return;
     }
-    dispatch(addContact({ id: nanoid(), name, number }));
-    resetForm();
+
+    Report.info('Warning!', `"${values.name}" is already in contacts`, 'Okay');
   };
 
+  useEffect(() => {
+    if (contacts.length === 0) {
+      return;
+    }
+  }, [contacts]);
+
   return (
-    <Formik
-      validationSchema={validationSchema}
-      initialValues={initialValues}
-      onSubmit={handleSubmit}
-    >
+    <Formik initialValues={initialValues} onSubmit={handleSubmit}>
       <Form>
         <FormLabel>
           <FormSpan>Name</FormSpan>
@@ -50,7 +50,6 @@ const ContactForm = () => {
             title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
             required
           />
-          <ErrorMessage name="name" />
           <FormSpan>Number</FormSpan>
           <Field
             type="tel"

@@ -1,13 +1,9 @@
 import PropTypes from 'prop-types';
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = {
-  filter: '',
-};
-
 export const filteredSlice = createSlice({
   name: 'filter',
-  initialState: initialState.filter,
+  initialState: '',
   reducers: {
     changeFilter(state, action) {
       return (state = action.payload);
@@ -18,8 +14,6 @@ export const filteredSlice = createSlice({
 export const { changeFilter } = filteredSlice.actions;
 
 export const filteredReducer = filteredSlice.reducer;
-
-export const getFilter = state => state.filter;
 
 filteredSlice.propTypes = {
   filter: PropTypes.string,
