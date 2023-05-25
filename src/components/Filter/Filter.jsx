@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { changeFilter } from 'components/features/filteredSlice';
+import { changeFilter } from 'redux/contscts/filteredSlice';
 import { FilterContainer } from './Filter.styled';
 import { useDispatch } from 'react-redux';
 

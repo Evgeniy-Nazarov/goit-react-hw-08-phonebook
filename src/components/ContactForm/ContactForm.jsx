@@ -2,9 +2,9 @@ import { Form, Formik, Field, ErrorMessage } from 'formik';
 import PropTypes from 'prop-types';
 import { FormButton, FormLabel, FormSpan } from './ContactForm.styled';
 import { useDispatch, useSelector } from 'react-redux';
-import { addContact } from 'components/features/thunk';
+import { addContact } from 'redux/contscts/thunk';
 import { Report } from 'notiflix';
-import { selectContacts } from 'components/Selector/Selector';
+import { selectContacts } from 'redux/contscts/selector';
 import { useEffect } from 'react';
 
 const initialValues = {

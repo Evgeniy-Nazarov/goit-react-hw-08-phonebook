@@ -1,14 +1,13 @@
 import PropTypes from 'prop-types';
 import { ContactItem, ContactItems } from './ContactList.styled';
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteContact, fetchContacts } from 'components/features/thunk';
+import { deleteContact, fetchContacts } from 'redux/contscts/thunk';
 import { useEffect } from 'react';
 import {
   selectContacts,
   selectFilter,
   selectIsLoading,
-} from 'components/Selector/Selector';
-import { PulseLoader } from 'react-spinners';
+} from 'redux/contscts/selector';
 
 const ContactList = () => {
   const contacts = useSelector(selectContacts);
@@ -28,11 +27,7 @@ const ContactList = () => {
       {!selectIsLoading && contacts.length <= 0 && (
         <p>There are no contacts in the list</p>
       )}
-      {!selectIsLoading && (
-        <span>
-          <PulseLoader color="black" size={10} />
-        </span>
-      )}
+
       <ContactItems>
         {contactsListClear.map(({ id, name, number }) => (
           <ContactItem key={id}>
