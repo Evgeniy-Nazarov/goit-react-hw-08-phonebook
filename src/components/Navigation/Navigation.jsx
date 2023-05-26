@@ -1,20 +1,37 @@
-import { NavLink } from 'react-router-dom';
 import { useAuth } from 'hooks';
-import css from './Navigation.module.css';
+import { Toolbar, Typography } from '@mui/material';
+import { UserMenu } from 'components/UserMenu/UserMenu';
+import { AuthNav } from 'components/AuthNav/AuthNav';
+const NavLink = require('react-router-dom').NavLink;
 
 export const Navigation = () => {
   const { isLoggedIn } = useAuth();
 
   return (
-    <nav>
-      <NavLink className={css.link} to="/">
+    <Toolbar>
+      <Typography
+        textDecoration="none"
+        color="inherit"
+        variant="h6"
+        sx={{ flexGrow: 1, textDecoration: 'none' }}
+        component={NavLink}
+        to="/"
+      >
         Home
-      </NavLink>
+      </Typography>
       {isLoggedIn && (
-        <NavLink className={css.link} to="/contacts">
+        <Typography
+          textDecoration="none"
+          color="inherit"
+          variant="h6"
+          sx={{ flexGrow: 12, textDecoration: 'none' }}
+          component={NavLink}
+          to="/contacts"
+        >
           Contacts
-        </NavLink>
+        </Typography>
       )}
-    </nav>
+      {isLoggedIn ? <UserMenu /> : <AuthNav />}
+    </Toolbar>
   );
 };
