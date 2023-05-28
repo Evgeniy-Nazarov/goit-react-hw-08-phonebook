@@ -1,5 +1,9 @@
 import PropTypes from 'prop-types';
-import { ContactItem, ContactItems } from './ContactList.styled';
+import {
+  ContactItem,
+  ContactItemButton,
+  ContactItems,
+} from './ContactList.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteContact, fetchContacts } from 'redux/contscts/thunk';
 import { useEffect } from 'react';
@@ -32,9 +36,12 @@ const ContactList = () => {
         {contactsListClear.map(({ id, name, number }) => (
           <ContactItem key={id}>
             {name}: {number}
-            <button onClick={() => dispatch(deleteContact(id))} type="button">
+            <ContactItemButton
+              onClick={() => dispatch(deleteContact(id))}
+              type="button"
+            >
               Delete
-            </button>
+            </ContactItemButton>
           </ContactItem>
         ))}
       </ContactItems>

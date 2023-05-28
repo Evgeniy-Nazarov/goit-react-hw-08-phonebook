@@ -1,6 +1,12 @@
-import { Form, Formik, Field, ErrorMessage } from 'formik';
+import { ErrorMessage, Formik } from 'formik';
 import PropTypes from 'prop-types';
-import { FormButton, FormLabel, FormSpan } from './ContactForm.styled';
+import {
+  FormButton,
+  FormInput,
+  FormLabel,
+  FormSpan,
+  FormStyled,
+} from './ContactForm.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from 'redux/contscts/thunk';
 import { Report } from 'notiflix';
@@ -40,10 +46,10 @@ const ContactForm = () => {
 
   return (
     <Formik initialValues={initialValues} onSubmit={handleSubmit}>
-      <Form>
+      <FormStyled>
         <FormLabel>
           <FormSpan>Name</FormSpan>
-          <Field
+          <FormInput
             type="text"
             name="name"
             pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -51,7 +57,7 @@ const ContactForm = () => {
             required
           />
           <FormSpan>Number</FormSpan>
-          <Field
+          <FormInput
             type="tel"
             name="number"
             pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
@@ -61,7 +67,7 @@ const ContactForm = () => {
           <ErrorMessage name="number" />
         </FormLabel>
         <FormButton type="submit">add contact</FormButton>
-      </Form>
+      </FormStyled>
     </Formik>
   );
 };

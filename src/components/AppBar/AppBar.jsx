@@ -1,12 +1,16 @@
 import { Navigation } from '../Navigation/Navigation';
-import { AppBar, Box } from '@mui/material';
+import { UserMenu } from '../UserMenu/UserMenu';
+import { AuthNav } from '../AuthNav/AuthNav';
+import { useAuth } from 'hooks';
+import { AppBarStyled } from './AppBar.styled';
 
-export const AppBarPhoneBook = () => {
+export const AppBar = () => {
+  const { isLoggedIn } = useAuth();
+
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
-        <Navigation />
-      </AppBar>
-    </Box>
+    <AppBarStyled>
+      <Navigation />
+      {isLoggedIn ? <UserMenu /> : <AuthNav />}
+    </AppBarStyled>
   );
 };

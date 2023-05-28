@@ -1,45 +1,26 @@
-import { Field, Form } from "formik";
-import styled from "styled-components";
+import styled from 'styled-components';
 
-export const PhoneBook = styled.div`
+export const LoginFormStyled = styled.form`
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.5);
 `;
-
-export const FormStyled = styled(Form)`
+export const LabelStyled = styled.label`
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-`;
-
-export const Title = styled.h1`
-    font-size: 30px;
+    align-items: flex-start;
     margin-bottom: 20px;
-`;
-
-export const FormLabel = styled.label`
-    display: block;
-    margin-top: 10px;
     font-size: 20px;
     font-weight: 700;
-    text-align: center;
-    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 `;
-
-export const FormSpan = styled.span`
-    display: block;
-    margin-top: 10px;
-    font-size: 20px;
-    font-weight: 700;
-    margin-left: 10px;
-   text-align: center;
-    margin-bottom: 10px;
-`;
-
-export const FormInput = styled(Field)`
+export const InputStyled = styled.input`
     display: block;
     width: 300px;
     padding: 10px;
@@ -48,7 +29,6 @@ export const FormInput = styled(Field)`
     font-weight: 700;
     border: 2px solid #2196f3;
     border-radius: 4px;
-    align-items: center;
     transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
     &:focus {
         border-color: #ff6b08;
@@ -56,8 +36,7 @@ export const FormInput = styled(Field)`
         outline: none;
     }
 `;
-
-export const FormButton = styled.button`
+export const ButtonStyled = styled.button`
     display: block;
     width: 300px;
     padding: 10px;
@@ -73,4 +52,11 @@ export const FormButton = styled.button`
     &:hover {
         background-color: #ff6b08;
     }
+`;
+export const ErrorStyled = styled.span`
+    display: block;
+    margin-top: 10px;
+    font-size: 20px;
+    font-weight: 700;
+    color: #ff6b08;
 `;

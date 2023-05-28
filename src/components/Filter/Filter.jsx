@@ -1,6 +1,11 @@
 import PropTypes from 'prop-types';
 import { changeFilter } from 'redux/contscts/filteredSlice';
-import { FilterContainer } from './Filter.styled';
+import {
+  FilterContainer,
+  FilterInputStyled,
+  FilterLabelStyled,
+  FilterSpanStyled,
+} from './Filter.styled';
 import { useDispatch } from 'react-redux';
 
 const Filter = () => {
@@ -14,8 +19,10 @@ const Filter = () => {
   return (
     <>
       <FilterContainer>
-        <span>Find contacts by name</span>
-        <input type="text" onInput={handleInput} />
+        <FilterSpanStyled>Find contacts by name</FilterSpanStyled>
+        <FilterLabelStyled htmlFor="filter">
+          <FilterInputStyled type="text" onInput={handleInput} />
+        </FilterLabelStyled>
       </FilterContainer>
     </>
   );
