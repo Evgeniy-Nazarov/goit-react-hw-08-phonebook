@@ -27,6 +27,7 @@ export const AuthNavRegisterStyled = styled(NavLink)`
     color: #fff;
     text-decoration: none;
     transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+     box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.5);
     &:hover {
         color: #000;
         background-color: #fff;
@@ -46,6 +47,7 @@ export const AuthNavLoginStyled = styled(NavLink)`
     color: #fff;
     text-decoration: none;
     transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+     box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.5);
     &:hover {
         color: #000;
         background-color: #fff;

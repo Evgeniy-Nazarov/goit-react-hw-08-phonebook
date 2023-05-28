@@ -27,15 +27,15 @@ export const RegisterForm = () => {
     <RegisterFormStyled onSubmit={handleSubmit} autoComplete="off">
       <LabelStyled>
         Username
-        <InputStyled type="text" name="name" />
+        <InputStyled type="text" name="name" autoComplete="off" />
       </LabelStyled>
       <LabelStyled>
         Email
-        <InputStyled type="email" name="email" />
+        <InputStyled type="email" name="email" autoComplete="off" />
       </LabelStyled>
       <LabelStyled>
         Password
-        <InputStyled type="password" name="password" />
+        <InputStyled type="password" name="password" autoComplete="off" />
       </LabelStyled>
       <ButtonStyled type="submit">Register</ButtonStyled>
     </RegisterFormStyled>
